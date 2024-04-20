@@ -1,0 +1,21 @@
+[{
+    "name": "admin",
+    "permissions": [
+        "view-dashboard",
+        "fetch-data-currency",
+        "view-user",
+        "create-user",
+        "edit-user",
+        "delete-user",
+        "view-role",
+        "create-role",
+        "edit-role",
+        "delete-role",
+        "view-permission"
+    ]
+}, {
+    "name": "user",
+    "permissions": [
+        "view-dashboard"
+    ]
+}]
