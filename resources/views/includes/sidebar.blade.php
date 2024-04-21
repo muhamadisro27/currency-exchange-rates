@@ -4,7 +4,7 @@
     <a href="{{ route('dashboard') }}" class="brand-link">
         <img src="{{ asset('img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
-        <span class="brand-text font-weight-light">Admin</span>
+        <span class="brand-text font-weight-light">Admin Currency</span>
     </a>
 
     <!-- Sidebar -->
@@ -27,7 +27,7 @@
                 @endif
                 @if (auth()->user()->can('view-user'))
                     <li class="nav-item">
-                        <a href="{{ route('user') }}" class="nav-link {{ request()->is('user') || request()->is('user/*')  ? 'active' : '' }}">
+                        <a href="{{ route('user.') }}" class="nav-link {{ request()->is('user') || request()->is('user/*')  ? 'active' : '' }}">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
                                 User

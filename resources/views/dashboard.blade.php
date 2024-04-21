@@ -1,17 +1,60 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Dashboard</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
             </div>
         </div>
-    </div>
+    </x-slot>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Latest Currency Exchange Rates</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="currency" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Currency</th>
+                            <th>Rates</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($rates as $rate)
+                            <tr>
+                                <td>{{ $rate['currency'] }}</td>
+                                <td>{{ $rate['rate'] }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+    @push('dashboard')
+        <script>
+            $('#currency').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        </script>
+    @endpush
 </x-app-layout>

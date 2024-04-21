@@ -14,12 +14,19 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-      <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('css/fontawesome/all.min.css') }}">
+      <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('css/datatables-bs4/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/datatables-responsive/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/datatables-buttons/buttons.bootstrap4.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+    
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -55,55 +62,13 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            {{-- <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Blank Page</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Blank Page</li>
-                            </ol>
-                        </div>
+            @if (isset($header))
+                <section class="content-header">
+                    <div class="container-fluid">
+                        {{ $header }}
                     </div>
-                </div><!-- /.container-fluid -->
-            </section>
-
-            <!-- Main content -->
-            <section class="content">
-
-                <!-- Default box -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Title</h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        Start creating your amazing application!
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        Footer
-                    </div>
-                    <!-- /.card-footer-->
-                </div>
-                <!-- /.card -->
-
-            </section>
-            <!-- /.content --> --}}
-
+                </section>
+            @endif
             {{ $slot }}
         </div>
         <!-- /.content-wrapper -->
@@ -112,9 +77,25 @@
     </div>
     <!-- ./wrapper -->
 
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <!-- DataTables  & Plugins -->
+    {{-- <script src="{{ asset('js/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/datatables-bs4/dataTables.bootstrap4.min.js') }}"></script> --}}
+    
+    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap4.js"></script>
+    {{-- <script src="{{ asset('js/datatables-responsive/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('js/datatables-responsive/responsive.bootstrap4.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/datatables-buttons/dataTables.buttons.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/datatables-buttons/buttons.bootstrap4.min.js') }}"></script> --}}
+    <script src="{{ asset('js/jszip/jszip.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/datatables-buttons/buttons.html5.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/datatables-buttons/buttons.print.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/datatables-buttons/buttons.colVis.min.js') }}"></script> --}}
+    
     <script src="{{ asset('js/adminlte.min.js') }}"></script>
+
+    @stack('dashboard')
 </body>
 
 </html>
