@@ -1,0 +1,51 @@
+[
+    {
+        "name" : "view-dashboard",
+        "category" : "currency-exchange-rates"
+    },
+    {
+        "name" : "fetch-data-currency",
+        "category" : "currency-exchange-rates"
+    },
+    {
+        "name" : "view-user",
+        "category" : "user"
+    },
+    {
+        "name" : "create-user",
+        "category" : "user"
+    },
+    {
+        "name" : "edit-user",
+        "category" : "user"
+    },
+    {
+        "name" : "delete-user",
+        "category" : "user"
+    },
+    {
+        "name" : "change-password",
+        "category" : "user"
+    },
+    {
+        "name" : "view-role",
+        "category" : "role"
+    },
+    {
+        "name" : "create-role",
+        "category" : "role"
+    },
+    {
+        "name" : "edit-role",
+        "category" : "role"
+    },
+    {
+        "name" : "delete-role",
+        "category" : "role"
+    },
+    {
+        "name" : "view-permission",
+        "category" : "permission"
+    }
+]
+

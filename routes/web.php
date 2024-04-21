@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,17 +16,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->to('login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::prefix('dashboard')->controller(DashboardController::class)->name('dashboard')->group(function() {
+        Route::get('/', 'index')->can('view-dashboard');
+    });
+    Route::prefix('user')->controller(UserController::class)->name('user.')->group(function () {
+        Route::get('/', 'index')->can('view-user');
+        Route::get('get-data', 'get_data')->name('get-data')->can('view-user');
+        Route::get('create', 'form')->name('create')->can('create-user');
+        Route::get('edit/{user}', 'form')->name('edit')->can('edit-user');
+        Route::post('save/{user?}', 'save')->name('save')->can('edit-user')->can('create-user');
+        Route::delete('destroy/{user}', 'destroy')->name('destroy')->can('delete-user');
+    });
+
 });
 
 require __DIR__.'/auth.php';
