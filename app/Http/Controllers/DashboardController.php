@@ -13,18 +13,13 @@ class DashboardController extends Controller
 
     public function index()
     {
-        // if(auth()->user()->roles->pluck('name')[0] == 'admin') {
-        //     $this->fetch_data();
-        // }
+        if(auth()->user()->roles->pluck('name')[0] == 'admin') {
+            $this->fetch_data();
+        }
 
         $rates = CurrencyRate::query()->orderBy('rate', 'desc')->get();
 
         return view('dashboard', compact('rates'));
-    }
-
-    public function data_table()
-    {
-
     }
 
     public function fetch_data()
