@@ -53,6 +53,13 @@ class DashboardController extends Controller
                     DB::commit();
 
                     break;
+                case 401:
+                    $response = [
+                        'status' => 401,
+                        'message' => 'Unauthorized !'
+                    ];
+
+                    break;
                 default:
                     DB::rollBack();
                     $response = [
